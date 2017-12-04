@@ -1,18 +1,15 @@
 package acg.pug.uega.freekick.Modelo;
 
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-@ManagedBean
 public class Usuario 
 {
 	@Id
 	private int ID;
 	private String Nombre;
 	private String Apellido;
-	private String Direccion;
 	private String Correo;
 	private String Contraseña;
 	public int getID() {
@@ -32,12 +29,6 @@ public class Usuario
 	}
 	public void setApellido(String apellido) {
 		Apellido = apellido;
-	}
-	public String getDireccion() {
-		return Direccion;
-	}
-	public void setDireccion(String direccion) {
-		Direccion = direccion;
 	}
 	public String getCorreo() {
 		return Correo;
