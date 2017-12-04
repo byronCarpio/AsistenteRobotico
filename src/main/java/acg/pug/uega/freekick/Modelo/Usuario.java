@@ -1,7 +1,14 @@
 package acg.pug.uega.freekick.Modelo;
 
+import javax.faces.bean.ManagedBean;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+@ManagedBean
 public class Usuario 
 {
+	@Id
 	private int ID;
 	private String Nombre;
 	private String Apellido;
