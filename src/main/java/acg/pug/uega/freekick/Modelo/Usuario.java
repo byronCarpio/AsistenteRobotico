@@ -52,6 +52,12 @@ public class Usuario
 		Contraseña = contraseña;
 	}
 	
+	public String probar() {
+		
+		
+		return null;
+	}
+	
 	
 	
 	
