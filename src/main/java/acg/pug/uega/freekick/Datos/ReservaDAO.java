@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import acg.pug.uega.freekick.Modelo.Cancha;
 import acg.pug.uega.freekick.Modelo.Reserva;
 //existen los ejb de sesion es es StayFull
 //				 	Sigleton que seria un Scope de un ManagedBean
@@ -44,6 +45,15 @@ public class ReservaDAO {
 		List <Reserva> listadoReservas = query.getResultList();
 		// se va a leer desde el reservaController
 		return listadoReservas;
+	}
+	
+	public List<Cancha> ListadoCanchas() {
+		String jpql = "SELECT c FROM Cancha c";
+		System.out.println("que me devuelve"+jpql);
+		Query query  = em.createQuery(jpql, Cancha.class);
+		List <Cancha> ListadoCanchas = query.getResultList();
+		// se va a leer desde el personaController
+		return ListadoCanchas;
 	}
 	
 	public void guardar(Reserva reserva) {
