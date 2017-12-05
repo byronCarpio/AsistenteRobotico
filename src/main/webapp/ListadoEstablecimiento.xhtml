@@ -132,16 +132,25 @@
 				#{cancha.horario}
 			</h:column>
 			
+		</h:dataTable>
+		
+		
+		<h:dataTable value="#{establecimientoController.servicios}" var="servicios" rendered="#{not empty establecimientoController.establecimiento}"> 
+			
 			<h:column>
-				<f:facet name="header">Acciones</f:facet>
-				<!-- mana a ejecutar el metodo loaddatoseditar y le manda de paramatro la codigo -->
-				
-				
-				
-				<a href="Editar-Establecimiento.xhtml?codigo=#{establecimiento.nombres}">Editar</a>
-				
-				<h:commandButton action="#{establecimientoController.borrarCancha(establecimiento.codigo)}" value="Borrar" />
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Codigo</f:facet>
+				#{servicios.codigo}
 			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Descripcion</f:facet>
+				#{servicios.descripcion}
+			</h:column>
+			
+			
+			
 		</h:dataTable>
 		
 		

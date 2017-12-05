@@ -1,5 +1,6 @@
 package acg.pug.uega.freekick.Modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name="tbl_establecimiento")
-public class Establecimiento {
+public class Establecimiento implements Serializable {
 	@Id
 	@Column(name="est_codigo", length = 6)
 	private int codigo;
@@ -72,9 +73,20 @@ public class Establecimiento {
 	@JoinColumn(name="est_can_codigo", referencedColumnName="est_codigo")
 	private List<Cancha> canchas;
 	
+	@OneToMany(cascade= {CascadeType.ALL}, fetch=FetchType.LAZY)
+	@JoinColumn(name="est_ser_codigo", referencedColumnName="est_nombreLocal")
+	private List<Servicios> servicios;
 	
+	
+	public List<Servicios> getServicios() {
+		return servicios;
+	}
 
-	
+
+	public void setServicios(List<Servicios> servicios) {
+		this.servicios = servicios;
+	}
+
 
 	public List<Cancha> getCanchas() {
 		return canchas;
@@ -188,4 +200,12 @@ public class Establecimiento {
 		canchas.add(cancha);
 		
 	}
+	public void addServicios(Servicios  servicio) {
+		if (servicios ==null) 
+			servicios = new ArrayList<>();
+			servicios.add(servicio);
+		
+	}
+	
 }
+

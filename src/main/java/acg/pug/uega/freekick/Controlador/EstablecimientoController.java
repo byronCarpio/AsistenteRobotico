@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 
 import acg.pug.uega.freekick.Modelo.Establecimiento;
+import acg.pug.uega.freekick.Modelo.Servicios;
 import acg.pug.uega.freekick.Datos.EstablecimientoDAO;
 import acg.pug.uega.freekick.Modelo.Cancha;
 
@@ -27,16 +28,6 @@ public class EstablecimientoController {
 	
 	private int id;
 
-	@PostConstruct
-	public void  init() {
-		establecimiento = new Establecimiento();
-		establecimiento.addCancha(new Cancha());
-		//persona.addTelefono(new Telefono());
-		//manda a cargar el listado de personas como para tener una instancia de ellas
-		loadEstablecimiento();
-		loadCancha();
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -47,15 +38,32 @@ public class EstablecimientoController {
 		this.loadDatosEditar(id);
 	}
 	
-
+	@PostConstruct
+	public void  init() {
+		this.establecimiento = new Establecimiento();
+		this.establecimiento.addCancha(new Cancha());
+		this.establecimiento.addServicios(new Servicios());
+		//persona.addTelefono(new Telefono());
+		//manda a cargar el listado de personas como para tener una instancia de ellas
+		this.loadEstablecimiento();
+		this.loadCancha();
+		this.loadServicios();
+	}
 	@Inject
 	private EstablecimientoDAO edao;
 	
 	private List<Establecimiento> establecimentos;
 	private List<Cancha> canchas;
+	private List<Servicios> servicios;
 	
-	
-	
+	public List<Servicios> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(List<Servicios> servicios) {
+		this.servicios = servicios;
+	}
+
 	public List<Cancha> getCanchas() {
 		return canchas;
 	}
@@ -84,15 +92,19 @@ public class EstablecimientoController {
 
 	
 	private void loadEstablecimiento() {
-		this.establecimentos = edao.ListadoEstablecimiento();
+		this.establecimentos = edao.listadoEstablecimiento();
 			
 		
 	}
 	private void loadCancha() {
-		this.canchas = edao.ListadoCanchas();
-			
-		
+		this.canchas = edao.listadoCanchas();
 	}
+	private void loadServicios() {
+		
+		this.servicios =edao.listadoServicios();
+	}
+	
+	
 	
 	
 	public String guardar() {
@@ -101,6 +113,7 @@ public class EstablecimientoController {
 			edao.guardar(establecimiento);
 			this.loadEstablecimiento();
 			this.loadCancha();
+			this.loadServicios();
 		} catch (Exception e) {
 			String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
@@ -138,17 +151,18 @@ public class EstablecimientoController {
 			edao.borrar(codigo);
 			this.loadEstablecimiento();
 			this.loadCancha();
+			this.loadServicios();
 			return "ListadoEstablecimiento";
 		}
-	 public String borrarCancha(int codigo) {
-			edao.borrar(codigo);
-			this.loadEstablecimiento();
-			this.loadCancha();
-			return "ListadoEstablecimiento";
-		}
+	
 
 		public String addCanchasI() {
 			this.establecimiento.addCancha(new Cancha());
 			return null;
 		}
+		public String addServiciosI() {
+			this.establecimiento.addServicios(new Servicios());
+			return null;
+		}
+		
 }

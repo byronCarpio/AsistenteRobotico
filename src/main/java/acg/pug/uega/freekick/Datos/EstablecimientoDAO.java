@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import acg.pug.uega.freekick.Modelo.Cancha;
 import acg.pug.uega.freekick.Modelo.Establecimiento;
+import acg.pug.uega.freekick.Modelo.Servicios;
 
 
 @Stateless
@@ -33,24 +34,31 @@ public class EstablecimientoDAO {
 		return em.find(Establecimiento.class, codigo);
 	}
 	
-	public List<Establecimiento> ListadoEstablecimiento() {
+	public List<Establecimiento> listadoEstablecimiento() {
 		String jpql = "SELECT e FROM Establecimiento e";
-		System.out.println("que me devuelve"+jpql);
+		//System.out.println("que me devuelve"+jpql);
 		Query query  = em.createQuery(jpql, Establecimiento.class);
 		List <Establecimiento> listado = query.getResultList();
 		// se va a leer desde el personaController
 		return listado;
 	}
 	
-	public List<Cancha> ListadoCanchas() {
+	public List<Cancha> listadoCanchas() {
 		String jpql = "SELECT c FROM Cancha c";
-		System.out.println("que me devuelve"+jpql);
+		//System.out.println("que me devuelve"+jpql);
 		Query query  = em.createQuery(jpql, Cancha.class);
 		List <Cancha> listado = query.getResultList();
 		// se va a leer desde el personaController
 		return listado;
 	}
-	
+	public List<Servicios> listadoServicios() {
+		String jpql = "SELECT s FROM Servicios s";
+		//System.out.println("que me devuelve"+jpql);
+		Query query  = em.createQuery(jpql, Servicios.class);
+		List <Servicios> listado = query.getResultList();
+		// se va a leer desde el personaController
+		return listado;
+	}
 	
 	public void guardar(Establecimiento establecimiento) {
 		Establecimiento p = leer(establecimiento.getCodigo());
@@ -61,3 +69,5 @@ public class EstablecimientoDAO {
 	}
 	
 }
+
+	
