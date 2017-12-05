@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import acg.pug.uega.freekick.Datos.ReservaDAO;
+import acg.pug.uega.freekick.Modelo.Cancha;
 import acg.pug.uega.freekick.Modelo.Reserva;
 
 @ManagedBean
@@ -68,6 +69,19 @@ public class ReservaController {
 	public String loadDatosEditar(int codigo) {
 		reserva = pdao.leer(codigo);
 		return "Registra_Reserva";
+	}
+	
+	private List<Cancha> canchas;
+	
+	public List<Cancha> getCanchas() {
+		return canchas;
+	}
+	public void setCanchas(List<Cancha> canchas) {
+		this.canchas = canchas;
+	}
+	
+	private void loadCanchas() {
+		canchas = pdao.ListadoCanchas();
 	}
 	
 	private List<Reserva> reservas;

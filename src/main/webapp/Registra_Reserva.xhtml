@@ -6,7 +6,7 @@
 
 <h:head></h:head>
 <body>
-<h1>Registra Reserva</h1>
+	<h1>Registra Reserva</h1>
 	<h:form>
 		<!-- imprimir mensajes de error definidos en el personaController -->
 		<h:messages globalOnly="true" />
@@ -16,16 +16,85 @@
 			<h:message for="codigo" />
 
 			<h:outputLabel value="Fecha Reserva: " />
-			<h:inputText value="#{reservaController.reserva.fecha_res}" for="fecha">
-				<f:convertDateTime pattern="dd-mm-yyyy"/>
+			<h:inputText value="#{reservaController.reserva.fecha_res}"
+				for="fecha">
+				<f:convertDateTime pattern="dd-mm-yyyy" />
 			</h:inputText>
-			<h:message  for="fecha"/>
+			<h:message for="fecha" />
 
+			<h:form>
+				<h:outputText value="No existe datos"
+					rendered="#{empty reservaController.canchas}" />
+				<!-- var es el objeto que va a iterar
+			rendered dice si quero o no quiero que se muestre -> todos los h tienen esa propiedad
+				en este caso si es que hay registros se muestran datos o si no no
+		 -->
+				<h:dataTable value="#{reservaController.canchas}" var="cancha"
+					rendered="#{not empty reservaController.canchas}">
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Codigo</f:facet>
+				#{cancha.codigo}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Nombre</f:facet>
+				#{cancha.nombre}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Direccion</f:facet>
+				#{cancha.direccion}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Precio</f:facet>
+				#{cancha.precio}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Tipo</f:facet>
+				#{cancha.tipo}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Maximo Jugadores</f:facet>
+				#{cancha.maxJugadores}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Informacion Adicional</f:facet>
+				#{cancha.informacion_Adicional}
+			</h:column>
+
+					<h:column>
+						<!-- cabecera de la columna -->
+						<f:facet name="header">Horarios</f:facet>
+				#{cancha.horario}
+			</h:column>
+
+				</h:dataTable>
+
+<br/>
+<br/>
+<br/>
+<br/>
+			</h:form>
 			<h:commandButton action="#{reservaController.guardar()}"
 				value="Guardar" />
+				
+				
 		</h:panelGrid>
 		<!-- inmediate hace que no valide el formulario -->
-		<h:commandButton action="ListadoReservas" value="Ir a listado" immediate="true"/>
+		<h:commandButton action="ListadoReservas" value="Ir a listado"
+			immediate="true" />
 	</h:form>
 
 </body>
