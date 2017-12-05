@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>Listado de Reservas</h1>
+	<h:form>
+		<h:outputText value="No existe datos"
+			rendered="#{empty reservaController.reservas}" />
+		<!-- var es el objeto que va a iterar
+			rendered dice si quero o no quiero que se muestre -> todos los h tienen esa propiedad
+				en este caso si es que hay registros se muestran datos o si no no
+		 -->
+		<h:dataTable value="#{reservaController.reservas}" var="reserva"
+			rendered="#{not empty reservaController.reservas}">
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Codigo</f:facet>
+				#{reserva.codigo}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Fecha de Reserva</f:facet>
+				#{reserva.fecha_res}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Acciones</f:facet>
+				<!-- mana a ejecutar el metodo loaddatoseditar y le manda de paramatro la cedula -->
+				<a href="Editar_Reserva.xhtml?id=#{reserva.codigo}">editar</a>
+				<h:commandButton
+					action="#{reservaController.borrarReserva(reserva.codigo)}"
+					value="Borrar" />
+			</h:column>
+		</h:dataTable>
+		<h:commandButton action="Editar_Reserva"
+			value="Registrar nueva reserva" />
+	</h:form>
+
+
+</body>
+</html>

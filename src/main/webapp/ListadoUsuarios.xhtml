@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>Lista de Usuarios</h1>
+	<h:form>
+		<h:outputText value="No existe datos"
+			rendered="#{empty usuarioController.usuarios}" />
+		<!-- var es el objeto que va a iterar
+			rendered dice si quero o no quiero que se muestre -> todos los h tienen esa propiedad
+				en este caso si es que hay registros se muestran datos o si no no
+		 -->
+		<h:dataTable value="#{usuarioController.usuarios}" var="usuario"
+			rendered="#{not empty usuarioController.usuarios}">
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Codigo</f:facet>
+				#{usuario.codigo}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Nombre</f:facet>
+				#{usuario.nombre}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Apellido</f:facet>
+				#{usuario.apellido}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Sexo</f:facet>
+				#{usuario.sexo}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">F.Nac</f:facet>
+				#{usuario.fecha_nac}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Correo</f:facet>
+				#{usuario.correo}
+			</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Latitud</f:facet>
+				#{usuario.latitud}
+				</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Longitud</f:facet>
+				#{usuario.longitud}
+				</h:column>
+
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Contraseña</f:facet>
+				#{usuario.contraseña}
+				</h:column>
+
+			<h:column>
+				<f:facet name="header">Acciones</f:facet>
+				<!-- mana a ejecutar el metodo loaddatoseditar y le manda de paramatro la cedula -->
+				<a href="Editar_Usuario.xhtml?id=#{usuario.codigo}">Editar    </a>
+				<h:commandButton
+					action="#{usuarioController.borrarUsuario(usuario.codigo)}"
+					value="Borrar" />
+			</h:column>
+		</h:dataTable>
+		<h:commandButton action="Registra_Usuario" value="Registrar Nuevo Usuario" />
+	</h:form>
+
+
+</body>
+</html>
