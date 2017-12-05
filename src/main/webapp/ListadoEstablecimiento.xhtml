@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:outputText value="No existe datos" rendered="#{empty establecimientoController.establecimiento}"/>
+		<!-- var es el objeto que va a iterar
+			rendered dice si quero o no quiero que se muestre -> todos los h tienen esa propiedad
+				en este caso si es que hay registros se muestran datos o si no no
+		 -->
+		<h:dataTable value="#{establecimientoController.establecimentos}" var="establecimiento" rendered="#{not empty establecimientoController.establecimiento}"> 
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Codigo</f:facet>
+				#{establecimiento.codigo}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Nombres</f:facet>
+				#{establecimiento.nombres}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Nombre Local</f:facet>
+				#{establecimiento.nombre_Local}
+			</h:column>
+		
+		    <h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Telefono</f:facet>
+				#{establecimiento.telefono}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Direccion</f:facet>
+				#{establecimiento.direccion}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Email</f:facet>
+				#{establecimiento.correo}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Contrasenia</f:facet>
+				#{establecimiento.contraseña}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Latitud</f:facet>
+				#{establecimiento.latitud}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Longitud</f:facet>
+				#{establecimiento.longitud}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Acciones</f:facet>
+				<!-- mana a ejecutar el metodo loaddatoseditar y le manda de paramatro la codigo -->
+				
+				
+				
+				<a href="Editar-Establecimiento.xhtml?codigo=#{establecimiento.codigo}">Editar</a>
+				
+				<h:commandButton action="#{establecimientoController.borrar(establecimiento.codigo)}" value="Borrar" />
+			</h:column>
+		</h:dataTable>
+	
+	
+	<!-- Esto valores son de la cancha -->
+		
+		<h:dataTable value="#{establecimientoController.canchas}" var="cancha" rendered="#{not empty establecimientoController.establecimiento}"> 
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Codigo</f:facet>
+				#{cancha.codigo}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Nombre</f:facet>
+				#{cancha.nombre}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Direccion</f:facet>
+				#{cancha.direccion}
+			</h:column>
+		
+		    <h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Precio</f:facet>
+				#{cancha.precio}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Tipo</f:facet>
+				#{cancha.tipo}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">cantidad</f:facet>
+				#{cancha.maxJugadores}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Informacion Adicional</f:facet>
+				#{cancha.informacion_Adicional}
+			</h:column>
+			
+			<h:column>
+				<!-- cabecera de la columna -->
+				<f:facet name="header">Horario</f:facet>
+				#{cancha.horario}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Acciones</f:facet>
+				<!-- mana a ejecutar el metodo loaddatoseditar y le manda de paramatro la codigo -->
+				
+				
+				
+				<a href="Editar-Establecimiento.xhtml?codigo=#{establecimiento.nombres}">Editar</a>
+				
+				<h:commandButton action="#{establecimientoController.borrarCancha(establecimiento.codigo)}" value="Borrar" />
+			</h:column>
+		</h:dataTable>
+		
+		
+		<h:commandButton action="InsertarEstablecimiento" value="Ir a Insertar Establecimiento" />
+	</h:form>
+	
+	
+</body> 
+</html>

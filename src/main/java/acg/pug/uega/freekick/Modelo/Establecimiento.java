@@ -19,7 +19,6 @@ import org.hibernate.validator.constraints.Email;
 @Entity
 @Table(name="tbl_establecimiento")
 public class Establecimiento {
-
 	@Id
 	@Column(name="est_codigo", length = 6)
 	private int codigo;
@@ -41,7 +40,8 @@ public class Establecimiento {
 	@Column(name="est_telefono")
 	private String telefono;
 	
-	@Email
+	@NotNull
+	@Size(max=30)
 	@Column(name="est_direccion")
 	private String direccion;
 	
@@ -57,14 +57,13 @@ public class Establecimiento {
 	
 	
 	@NotNull
-	@Size(max=30)
 	@Column(name="est_lactitud")
 	private double latitud;
 	
 	
 	@NotNull
-	@Size(max=30)
-	@Column(name="est_lactitud")
+	
+	@Column(name="est_longitud")
 	private double longitud;
 
 	
@@ -74,6 +73,7 @@ public class Establecimiento {
 	private List<Cancha> canchas;
 	
 	
+
 	
 
 	public List<Cancha> getCanchas() {
@@ -188,10 +188,4 @@ public class Establecimiento {
 		canchas.add(cancha);
 		
 	}
-	
-	
-	
-
-	
-	
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head></h:head>
+<body> 
+	<h:form>
+		<!-- imprimir mensajes de error definidos en el personaController -->
+		<h:messages globalOnly="true"/>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Codigo: " />
+			<h:inputText value="#{establecimientoController.establecimiento.codigo}" id="codigo"></h:inputText>
+			<h:message  for="codigo"/>
+			
+			<h:outputLabel value="Nombres: " />
+			<h:inputText value="#{establecimientoController.establecimiento.nombres}" id="nombre"></h:inputText>
+			<h:message  for="nombre"/>
+			
+			<h:outputLabel value="Nombre Local: " />
+			<h:inputText value="#{establecimientoController.establecimiento.nombre_Local}" id="local"></h:inputText>
+			<h:message  for="local"/>
+			
+			<h:outputLabel value="Telefono: " />
+			<h:inputText value="#{establecimientoController.establecimiento.telefono}" id="telefono"></h:inputText>
+			<h:message  for="telefono"/>
+			
+			<h:outputLabel value="Direccion: " />
+			<h:inputText value="#{establecimientoController.establecimiento.direccion}" id="direccion"></h:inputText>
+			<h:message  for="direccion"/>
+	
+			
+			<h:outputLabel value="Email " />
+			<h:inputText value="#{establecimientoController.establecimiento.correo}" id="email"></h:inputText>
+			<h:message  for="email"/>
+			
+			<h:outputLabel value="Contrasenia: " />
+			<h:inputText value="#{establecimientoController.establecimiento.contraseña}" id="contrasenia"></h:inputText>
+			<h:message  for="contrasenia"/>
+			
+			<h:outputLabel value="Latitud: " />
+			<h:inputText value="#{establecimientoController.establecimiento.latitud}" id="latitud"></h:inputText>
+			<h:message  for="latitud"/>
+			
+			<h:outputLabel value="Longitud: " />
+			<h:inputText value="#{establecimientoController.establecimiento.longitud}" id="longitud"></h:inputText>
+			<h:message  for="longitud"/>
+			
+			<h:commandButton action="#{establecimientoController.guardar()}" value="Guardar" />
+		
+		</h:panelGrid>
+		<h:commandButton action="#{establecimientoController.addCanchasI()}" value="Agregar Canchas">
+			<f:ajax render="tblCanchas" execute="@all"></f:ajax>
+		</h:commandButton>
+		
+		<h:dataTable value="#{establecimientoController.establecimiento.canchas}" var="canchas" id="tblCanchas">
+			
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				<h:inputText value="#{canchas.codigo}" id="codigo" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				<h:inputText value="#{canchas.nombre}" id="nombre" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Direccion</f:facet>
+				<h:inputText value="#{canchas.direccion}" id="dirreccion"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				<h:inputText value="#{canchas.precio}" id="precio"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Tipo</f:facet>
+				<h:inputText value="#{canchas.tipo}" id="tipo" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Cantidad</f:facet>
+				<h:inputText value="#{canchas.maxJugadores}" id="maxjugadores" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Informacion Adicional</f:facet>
+				<h:inputText value="#{canchas.informacion_Adicional}" id="info"/>
+			</h:column>
+	
+			<h:column>
+				<f:facet name="header">Horario</f:facet>
+				<h:inputText value="#{canchas.horario}" id="horario"/>
+			</h:column>
+	
+	
+		</h:dataTable>
+		
+		<!-- inmediate hace que no valide el formulario -->
+		<h:commandButton action="ListadoEstablecimiento" value="Ir a listado" immediate="true"/>
+	</h:form>
+</body>  
+</html>

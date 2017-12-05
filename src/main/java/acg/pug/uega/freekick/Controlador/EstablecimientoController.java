@@ -1,5 +1,6 @@
 package acg.pug.uega.freekick.Controlador;
 
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -32,29 +33,27 @@ public class EstablecimientoController {
 
 	public void setId(int id) {
 		this.id = id;
+		System.out.println("valor"+loadDatosEditar(id));
+		this.loadDatosEditar(id);
 	}
 	
 	@PostConstruct
 	public void  init() {
 		this.establecimiento = new Establecimiento();
-		//agregamos un telefono vacio
+		this.establecimiento.addCancha(new Cancha());
 		//persona.addTelefono(new Telefono());
 		//manda a cargar el listado de personas como para tener una instancia de ellas
-		//loadPersonas();
+		this.loadEstablecimiento();
+		this.loadCancha();
 	}
 	@Inject
 	private EstablecimientoDAO edao;
 	
 	private List<Establecimiento> establecimentos;
+	private List<Cancha> canchas;
 	
-	public List<Establecimiento> getEstablecimentos() {
-		return establecimentos;
-	}
-
-	public void setEstablecimentos(List<Establecimiento> establecimentos) {
-		this.establecimentos = establecimentos;
-	}
-
+	
+	
 	public List<Cancha> getCanchas() {
 		return canchas;
 	}
@@ -62,7 +61,16 @@ public class EstablecimientoController {
 	public void setCanchas(List<Cancha> canchas) {
 		this.canchas = canchas;
 	}
-	
+
+	public List<Establecimiento> getEstablecimentos() {
+		
+		return establecimentos;
+		
+	}
+
+	public void setEstablecimentos(List<Establecimiento> establecimentos) {
+		this.establecimentos = establecimentos;
+	}
 	
 	public Establecimiento getEstablecimiento() {
 		return establecimiento;
@@ -71,29 +79,39 @@ public class EstablecimientoController {
 	public void setEstablecimiento(Establecimiento establecimiento) {
 		this.establecimiento = establecimiento;
 	}
-	private List<Cancha> canchas;
+
 	
 	private void loadEstablecimiento() {
 		this.establecimentos = edao.ListadoEstablecimiento();
+			
+		
 	}
+	private void loadCancha() {
+		this.canchas = edao.ListadoCanchas();
+			
+		
+	}
+	
 	
 	public String guardar() {
 		//System.out.println(persona);
 		try {
 			edao.guardar(establecimiento);
 			this.loadEstablecimiento();
+			this.loadCancha();
 		} catch (Exception e) {
 			String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
             facesContext.addMessage(null, m);
 			return null;
 		}
-		return "ListadoPersonas";
+		return "ListadoEstablecimiento";
 	}
 	
 	public String loadDatosEditar(int codigo) {
 		this.establecimiento = edao.leer(codigo);
-		return "principal";
+		
+		return "InsertarEstablecimiento";
 	}
 	 private String getRootErrorMessage(Exception e) {
 	        // Default to general error message that registration failed.
@@ -114,16 +132,21 @@ public class EstablecimientoController {
 	        return errorMessage;
 	    }
 	 
-	 public String borrarPersona(int codigo) {
+	 public String borrar(int codigo) {
 			edao.borrar(codigo);
 			this.loadEstablecimiento();
-			return "ListadoPropietario";
+			this.loadCancha();
+			return "ListadoEstablecimiento";
 		}
-		
-		
+	 public String borrarCancha(int codigo) {
+			edao.borrar(codigo);
+			this.loadEstablecimiento();
+			this.loadCancha();
+			return "ListadoEstablecimiento";
+		}
+
 		public String addCanchasI() {
 			this.establecimiento.addCancha(new Cancha());
 			return null;
 		}
-	 
 }
