@@ -1,13 +1,9 @@
 package acg.pug.uega.freekick.Modelo;
-
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -30,7 +26,7 @@ public class Cancha {
 	private String direccion;
 	
 	@NotNull
-	@Size(min=4,max=20)
+	
 	@Column(name="can_precio")
 	private double precio;
 	
@@ -40,7 +36,7 @@ public class Cancha {
 	private String tipo;
 	
 	@NotNull
-	@Size(min=10,max=25)
+	@Size(min=2,max=3)
 	@Column(name="can_Cantidad")
 	private String maxJugadores;
 	
@@ -50,9 +46,9 @@ public class Cancha {
 	private String informacion_Adicional;
 	
 	@NotNull
-	@Temporal(TemporalType.DATE)
+	@Size(min=6,max=50)
 	@Column(name="can_horario")
-	private Date horario;
+	private String horario;
 
 	public int getCodigo() {
 		return codigo;
@@ -110,11 +106,11 @@ public class Cancha {
 		this.informacion_Adicional = informacion_Adicional;
 	}
 
-	public Date getHorario() {
+	public String getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Date horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 
@@ -124,11 +120,6 @@ public class Cancha {
 				+ ", tipo=" + tipo + ", maxJugadores=" + maxJugadores + ", informacion_Adicional="
 				+ informacion_Adicional + ", horario=" + horario + "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }
+

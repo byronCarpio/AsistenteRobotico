@@ -34,7 +34,7 @@ public class EstablecimientoDAO {
 	}
 	
 	public List<Establecimiento> ListadoEstablecimiento() {
-		String jpql = "SELECT e FROM tbl_establecimiento e";
+		String jpql = "SELECT e FROM Establecimiento e";
 		System.out.println("que me devuelve"+jpql);
 		Query query  = em.createQuery(jpql, Establecimiento.class);
 		List <Establecimiento> listado = query.getResultList();
@@ -43,7 +43,7 @@ public class EstablecimientoDAO {
 	}
 	
 	public List<Cancha> ListadoCanchas() {
-		String jpql = "SELECT c FROM tbl_cancha c";
+		String jpql = "SELECT c FROM Cancha c";
 		System.out.println("que me devuelve"+jpql);
 		Query query  = em.createQuery(jpql, Cancha.class);
 		List <Cancha> listado = query.getResultList();
@@ -59,5 +59,5 @@ public class EstablecimientoDAO {
 		else
 			actualizar(establecimiento);
 	}
-
+	
 }

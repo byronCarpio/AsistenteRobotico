@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<f:metadata>
+	<!-- la variable id se setee al beanproperty del id -->
+	<f:viewParam name="id" value=" #{establecimientoController.id}"></f:viewParam>
+	
+</f:metadata>
+<body> 
+	<h1>Editar Establecimiento</h1>
+	<h:form>
+		<h:inputHidden value="#{establecimientoController.id}" />
+		<!-- imprimir mensajes de error definidos en el personaController -->
+		<h:messages globalOnly="true"/>
+		<h:panelGrid columns="3">
+		
+		<h:outputLabel value="Codigo: " />
+		
+			<h:inputText value="#{establecimientoController.establecimiento.codigo}" id="codigo"></h:inputText>
+			<h:message  for="codigo"/>
+			
+			<h:outputLabel value="Nombres: " />
+			<h:inputText value="#{establecimientoController.establecimiento.nombres}" id="nombre"></h:inputText>
+			<h:message  for="nombre"/>
+			
+			<h:outputLabel value="Nombre Local: " />
+			<h:inputText value="#{establecimientoController.establecimiento.nombre_Local}" id="local"></h:inputText>
+			<h:message  for="local"/>
+			
+			<h:outputLabel value="Telefono: " />
+			<h:inputText value="#{establecimientoController.establecimiento.telefono}" id="telefono"></h:inputText>
+			<h:message  for="telefono"/>
+			
+			<h:outputLabel value="Direccion: " />
+			<h:inputText value="#{establecimientoController.establecimiento.direccion}" id="direccion"></h:inputText>
+			<h:message  for="direccion"/>
+	
+			
+			<h:outputLabel value="Email " />
+			<h:inputText value="#{establecimientoController.establecimiento.correo}" id="email"></h:inputText>
+			<h:message  for="email"/>
+			
+			<h:outputLabel value="Contrasenia: " />
+			<h:inputText value="#{establecimientoController.establecimiento.contraseña}" id="contrasenia"></h:inputText>
+			<h:message  for="contrasenia"/>
+			
+			<h:outputLabel value="Latitud: " />
+			<h:inputText value="#{establecimientoController.establecimiento.latitud}" id="latitud"></h:inputText>
+			<h:message  for="latitud"/>
+			
+			<h:outputLabel value="Longitud: " />
+			<h:inputText value="#{establecimientoController.establecimiento.longitud}" id="longitud"></h:inputText>
+			<h:message  for="longitud"/>
+			
+			<h:commandButton action="#{establecimientoController.guardar()}" value="Guardar" />
+		</h:panelGrid>
+		<!-- inmediate hace que no valide el formulario -->
+		<h:commandButton action="ListadoEstablecimiento" value="Ir a listado" immediate="true"/>
+	</h:form>
+	
+</body> 
+</html>
