@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<f:metadata>
+	<!-- la variable id se setee al beanproperty del id -->
+	<f:viewParam name="id" value="#{reservaController.id}"></f:viewParam>
+	
+</f:metadata>
+<body> 
+	<h1>Editar Reserva</h1>
+	<h:form>
+		<h:inputHidden value="#{reservaController.id}" />
+		<h:messages globalOnly="true"/>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Codigo:" for="codigo" />
+			<h:inputText value="#{reservaController.reserva.codigo}" id="codigo" />
+			<h:message for="codigo" />
+
+			<h:outputLabel value="Fecha Reserva: " />
+			<h:inputText value="#{reservaController.reserva.fecha_res}" for="fecha">
+				<f:convertDateTime pattern="dd-mm-yyyy"/>
+			</h:inputText>
+			<h:message  for="fecha"/>
+
+			<h:commandButton action="#{reservaController.guardar()}"
+				value="Guardar" />
+		</h:panelGrid>
+		<!-- inmediate hace que no valide el formulario -->
+		<h:commandButton action="ListadoReservas" value="Ir a listado" immediate="true"/>
+	</h:form>
+	
+</body> 
+</html>
