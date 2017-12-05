@@ -27,6 +27,16 @@ public class EstablecimientoController {
 	
 	private int id;
 
+	@PostConstruct
+	public void  init() {
+		establecimiento = new Establecimiento();
+		establecimiento.addCancha(new Cancha());
+		//persona.addTelefono(new Telefono());
+		//manda a cargar el listado de personas como para tener una instancia de ellas
+		loadEstablecimiento();
+		loadCancha();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -37,15 +47,7 @@ public class EstablecimientoController {
 		this.loadDatosEditar(id);
 	}
 	
-	@PostConstruct
-	public void  init() {
-		this.establecimiento = new Establecimiento();
-		this.establecimiento.addCancha(new Cancha());
-		//persona.addTelefono(new Telefono());
-		//manda a cargar el listado de personas como para tener una instancia de ellas
-		this.loadEstablecimiento();
-		this.loadCancha();
-	}
+
 	@Inject
 	private EstablecimientoDAO edao;
 	
