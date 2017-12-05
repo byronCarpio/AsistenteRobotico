@@ -1,0 +1,58 @@
+<manifest alg="2" build="2017.0.4.363" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="freekick.com" resolutions="1x" timestamp="1512432634616">
+  <folder name="css">
+    <file name="site_global.css" crc="443350757"/>
+    <file name="index.css" crc="137439245" ref="index"/>
+    <file name="master_a-p_g_-maestra.css" crc="4198219026" ref="freekick:contactos:form_propi:login:index"/>
+    <file name="freekick.css" crc="130113842" ref="freekick"/>
+    <file name="contactos.css" crc="130113842" ref="contactos"/>
+    <file name="form_propi.css" crc="4125397696" ref="form_propi"/>
+    <file name="login.css" crc="486556944" ref="login"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="museutils.js" crc="4216313831" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="whatinput.js" crc="86476730" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="museconfig.js" crc="4177022356" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="4110862005" ref="index:login:form_propi"/>
+    <file name="jquery.watch.js" crc="460461809" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="require.js" crc="3951022091" ref="index:freekick:contactos:login:form_propi"/>
+    <file name="webpro.js" crc="4143865194" ref="form_propi"/>
+    <file name="form_check.php" crc="154010282" ref="form_propi"/>
+    <file name="form_throttle.php" crc="266437015" ref="form_propi"/>
+    <file name="form_process.php" crc="512629711" ref="form_propi"/>
+    <file name="form-u845.php" crc="190934077" ref="form_propi"/>
+  </folder>
+  <folder name="images">
+    <file name="soccer.jpg" crc="366181413" ref="index">
+      <caption webpage="index" alt=""/>
+    </file>
+    <file name="recurso-1.svg" crc="3763509131" seo="true" ref="index:freekick:contactos:login:form_propi">
+      <caption webpage="index" alt=""/>
+      <caption webpage="contactos" alt=""/>
+      <caption webpage="form_propi" alt=""/>
+      <caption webpage="freekick" alt=""/>
+      <caption webpage="login" alt=""/>
+    </file>
+    <file name="recurso 1_poster_.png" crc="505807926" ref="index"/>
+    <file name="pes2013-2012-10-28-14-12-52-51.jpg" crc="175681022" ref="login:form_propi">
+      <caption webpage="login" alt=""/>
+    </file>
+    <file name="recurso-3.svg" crc="11159778" seo="true" ref="login">
+      <caption webpage="login" alt=""/>
+    </file>
+    <file name="recurso 3_poster_.png" crc="4262884375" ref="login"/>
+    <file name="recurso-4.svg" crc="519364337" seo="true" ref="login">
+      <caption webpage="login" alt=""/>
+    </file>
+    <file name="recurso 4_poster_.png" crc="4857549" ref="login"/>
+    <file name="recurso-5.svg" crc="203966723" seo="true" ref="login">
+      <caption webpage="login" alt=""/>
+    </file>
+    <file name="recurso 5_poster_.png" crc="344419617" ref="login"/>
+  </folder>
+  <file name="index.html" crc="4062598250" seo="true" mt="1512432596550" redirect="true"/>
+  <file name="freekick.html" crc="228060028" seo="true" mt="1512432596550" redirect="true"/>
+  <file name="contactos.html" crc="3884413840" seo="true" mt="1512432596550" redirect="true"/>
+  <file name="login.html" crc="3989377412" seo="true" mt="1512432596550" redirect="true"/>
+  <file name="form_propi.html" crc="4010651339" seo="true" mt="1512432596550" redirect="true"/>
+</manifest>
