@@ -99,6 +99,26 @@
 	
 		</h:dataTable>
 		
+		
+		<h:commandButton action="#{establecimientoController.establecimiento.servicios}" value="Agregar Servicios">
+			<f:ajax render="tblServicios" execute="@all"></f:ajax>
+		</h:commandButton>
+		
+		<h:dataTable value="#{establecimientoController.establecimiento.servicios}" var="servicios" id="tblServicios">
+			
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				<h:inputText value="#{servicios.codigo}" id="codigo" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Descripcion</f:facet>
+				<h:inputText value="#{servicios.descripcion}" id="descripcion" />
+			</h:column>
+			
+		</h:dataTable>
+		
+		
 		<!-- inmediate hace que no valide el formulario -->
 		<h:commandButton action="ListadoEstablecimiento" value="Ir a listado" immediate="true"/>
 	</h:form>
