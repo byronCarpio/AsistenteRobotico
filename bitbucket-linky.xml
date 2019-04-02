@@ -4,4 +4,9 @@
       <record scheme="https" hostname="bitbucket.org" port="-1" instance="Production" />
     </lookup>
   </component>
+  <component name="BitbucketServerRegistry">
+    <instances />
+    <lookup />
+  </component>
+  <component name="Instance" id="a290b705-188a-4af0-a436-dde47f450238" version="6.4" />
 </application>
